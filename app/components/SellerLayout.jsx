@@ -1,8 +1,11 @@
+"use client"
 // components/SellersLayout.js
 import Link from "next/link";
 import Image from "next/image";
 import search from "../public/search.svg";
 import profile from "../public/profile.svg";
+import dashboard from "../public/dashboard.svg";
+import menu from "../public/menu-3.svg"
 import { MdSettings, MdSpaceDashboard } from "react-icons/md";
 import { HiMiniShoppingBag } from "react-icons/hi2";
 import { FaCartShopping } from "react-icons/fa6";
@@ -12,10 +15,18 @@ import { MdReviews } from "react-icons/md";
 import { HiCash } from "react-icons/hi";
 
 const SellerLayout = ({ children }) => {
+  const handleSidebar = () => {
+    const dropDown = document.getElementById("sidebar");
+    dropDown.classList.contains("hidden")
+      ? dropDown.classList.remove("hidden")
+      : dropDown.classList.add("hidden");
+  };
+
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
+      <Image onClick={handleSidebar} className="absolute flex top-7" src={menu} alt="" />
       {/* Sidebar */}
-      <aside className="w-64 left-0 fixed h-screen bg-gray-50 shadow-lg flex flex-col p-6">
+      <aside id="sidebar" className="flex-1  flex h-screen bg-gray-50 shadow-lg  flex-col p-6">
         {/* Logo */}
         <Link
           href="/"
@@ -27,7 +38,7 @@ const SellerLayout = ({ children }) => {
         {/* Sidebar Links */}
         <nav className="flex flex-col gap-6 text-gray-700">
           <Link href="/sell/dashboard" className="flex items-center space-x-2">
-            <MdSpaceDashboard />
+            <MdSpaceDashboard/>
             <span>Dashboard</span>
           </Link>
           <Link href="/sell/products" className="flex items-center space-x-2">
@@ -66,9 +77,9 @@ const SellerLayout = ({ children }) => {
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1  bg-white p-2">
+      <main className=" flex-[3] bg-white pb-20 p-2">
         {/* Header */}
-        <header className="fixed top-0 left-64 right-0 h-16 bg-white shadow-lg flex justify-between items-center px-6 z-10 ">
+        <header className="  h-16 mb-10 bg-white  flex justify-between items-center px-6 ">
           {/* Search Bar */}
           <div className="flex items-center space-x-2 w-1/2">
             <input
@@ -76,9 +87,6 @@ const SellerLayout = ({ children }) => {
               type="text"
               placeholder="Search..."
             />
-            <button className="p-2 bg-blue-500 text-white rounded-full">
-              <Image className="w-6 h-6" src={search} alt="Search" />
-            </button>
           </div>
 
           {/* Profile Section */}
@@ -98,7 +106,9 @@ const SellerLayout = ({ children }) => {
         </header>
 
         {/* Page Content */}
-        <div className=" p-6 overflow-y-auto h-full ">{children}</div>
+        <div className=" overflow-y-auto h-full flex md:px-6 flex-col bg-[#fafafa] ">
+          {children}
+        </div>
       </main>
     </div>
   );

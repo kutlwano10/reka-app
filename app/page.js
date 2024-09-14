@@ -19,6 +19,7 @@ export default function Home() {
       <div className="mt-24 md:mt-36">
         <Filter />
         <div className=" flex justify-center">
+
           <Image className="h-[20rem] object-cover" src={vegFruits} alt="" />
           <div className="w-[50%]  absolute self-center flex ">
             <input

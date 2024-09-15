@@ -38,27 +38,27 @@ const SellerLayout = ({ children }) => {
         {/* Sidebar Links */}
         <nav className="flex flex-col gap-6 text-gray-700">
           <Link href="/sell/dashboard" className="flex items-center space-x-2">
-            <MdSpaceDashboard/>
+            <MdSpaceDashboard size={30}/>
             <span>Dashboard</span>
           </Link>
           <Link href="/sell/products" className="flex items-center space-x-2">
-            <HiMiniShoppingBag />
+            <HiMiniShoppingBag size={30} />
             <span>Products</span>
           </Link>
           <Link href="/sell/orders" className="flex items-center space-x-2">
-            <FaCartShopping />
+            <FaCartShopping size={30} />
             <span>Orders</span>
           </Link>
           <Link href="/sell/customers" className="flex items-center space-x-2">
-            <IoPeople />
+            <IoPeople size={30} />
             <span>Customers</span>
           </Link>
           <Link href="/sell/reports" className="flex items-center space-x-2">
-            <BsBarChartFill />
+            <BsBarChartFill size={30} />
             <span>Statistics</span>
           </Link>
           <Link href="/sell/reviews" className="flex items-center space-x-2">
-            <MdReviews className="" />
+            <MdReviews size={30} />
 
             <span>Reviews</span>
           </Link>
@@ -66,11 +66,11 @@ const SellerLayout = ({ children }) => {
             href="/sell/transaction"
             className="flex items-center space-x-2"
           >
-            <HiCash />
+            <HiCash size={30} />
             <span>Transactions</span>
           </Link>
           <Link href="/sell/settings" className="flex items-center space-x-2">
-            <MdSettings />
+            <MdSettings size={30} />
             <span>Settings</span>
           </Link>
         </nav>

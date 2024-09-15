@@ -12,11 +12,11 @@ export default function Home() {
     window.scrollTo(0, 0);
   });
   return (
-    <div>
+    <div className="">
       <div>
         <Header />
       </div>
-      <div className="mt-24 md:mt-36">
+      <div className="pt-24 md:pt-36 bg-[#f1f1f1]" >
         <Filter />
         <div className=" flex justify-center">
 

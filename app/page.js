@@ -1,5 +1,5 @@
-"use client";
-import { useEffect } from "react";
+
+
 import ProductList from "./components/ProductList";
 import Image from "next/image";
 import search from "./public/search.svg";
@@ -8,9 +8,9 @@ import Filter from "./components/Filter";
 import Header from "./components/Header";
 
 export default function Home() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
   return (
     <div className="">
       <div>

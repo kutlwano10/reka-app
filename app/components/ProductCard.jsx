@@ -1,4 +1,4 @@
-"use client"
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,8 +6,8 @@ import favorite from "../public/favorite.svg";
 import cart from "../public/cart.svg";
 
 const ProductCard = ( props ) => {
-  const { title, thumbnail, category, price, id} = props;
-  return (
+  const { title, images, category, price, _id} = props;
+   return (
     <div className="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5  overflow-hidden">
       <div className="flex align-center p-2">
         <button className="relative left-[85%]">
@@ -16,8 +16,8 @@ const ProductCard = ( props ) => {
         </button>
       </div>
 
-      <Link href={`/product/${id}`} className="flex justify-center">
-        <img className="object-cover " src={thumbnail} alt="" />
+      <Link href={`/products/${_id}`} className="flex justify-center">
+        <img className="object-cover " src={images} alt="" />
       </Link>
 
       <div className="flex-1 flex flex-col p-2">
@@ -25,7 +25,7 @@ const ProductCard = ( props ) => {
           <header className="mb-2 flex-2">
             <h2 className="text-sm line-clamp-2 font-extrabold leading-snug">
               <div className="text-slate-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300">
-                {title}
+                <Link href={`/products/${_id}`}>{title}</Link>
               </div>
             </h2>
           </header>
@@ -43,7 +43,7 @@ const ProductCard = ( props ) => {
         </div>
         <div className="flex justify-end gap-3 space-x-2">
           <button>
-            <Image className="w-8" src={cart} alt=""  />
+            <Image className="w-8" width={100} height={100}src={cart} alt=""  />
           </button>
         </div>
       </div>

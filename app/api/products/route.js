@@ -8,12 +8,12 @@ import { NextResponse } from "next/server";
  */
 
 export async function POST(request) {
-  const { title, description } = await request.json();
+  const { title, description, images , price} = await request.json();
   await connectToMongoDB();
   /**
    * This will create the new Products
    */
-  await Product.create({ title, description });
+  await Product.create({ title, description , images, price});
   return NextResponse.json({message: "Product Created"} , {status: 201})
 }
 
@@ -34,3 +34,10 @@ export async function DELETE(request) {
     await Product.findByIdAndDelete(id)
     return NextResponse.json({message: "Product Deleted"}, {status: 201})
 }
+
+// export async function DELETE() {
+    
+//     await connectToMongoDB()
+//     await Product.deleteMany()
+//     return NextResponse.json({message: "Product Deleted"}, {status: 201})
+// }

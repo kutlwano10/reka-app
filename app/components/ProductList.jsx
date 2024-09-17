@@ -5,11 +5,13 @@ import ProductCard from "./ProductCard";
 
 const fetchProductsData = async () => {
   try {
-    const response = await fetch(`http://localhost:3000/api/products`, { cache: "no-store" }); //cache is to update the new Products
+    const response = await fetch(`http://localhost:3001/api/products`, { cache: "no-store" }); //cache is to update the new Products
     if(!response.ok) {
       throw Error ("Failed to Fetch Products")
     }
-    return response.json();
+    let data = await response.json()
+    console.log(data)
+    return data
   } catch (error) {
     console.log("Error loading Products:", error)
   }
@@ -18,9 +20,10 @@ const fetchProductsData = async () => {
 };
 
 const ProductList =async () => {
+  
 
-  const {products} = await fetchProductsData()
- 
+  const products = await fetchProductsData()
+//  console.log('12345',products,'12345')
 
   // let [products, setProducts] = useState([]);
   // let [loading, setLoading] = useState(false);
@@ -63,7 +66,7 @@ const ProductList =async () => {
     <div>
       <div>
         <div className=" px-[8%] md:px-0 max-w-xl md:mx-auto grid gap-4 grid-cols-2 lg:grid-cols-5 justify-center md:grid-cols-3 lg:mx-[9%] items-center lg:max-w-none my-4">
-          {products.map((product) => (
+          {products.products.map((product) => (
             <ProductCard key={product._id} {...product} />
           ))}
         </div>

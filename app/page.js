@@ -29,7 +29,7 @@ export default function Home() {
               placeholder="Search"
             />
             <button className="absolute flex justify-center items-center md:right-3 right-2 top-1/2 transform -translate-y-1/2  rounded-full ">
-              <Image className="w-6 h-6 md:w-8 md:h-8  " src={search} alt="" />
+              <Image className="w-6 h-6 md:w-8 md:h-8" src={search} alt="" />
             </button>
           </div>
         </div>

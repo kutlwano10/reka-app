@@ -12,12 +12,12 @@ const ProductCard = ( props ) => {
       <div className="flex align-center p-2">
         <button className="relative left-[85%]">
           {/*  */}
-          <Image src={favorite} alt="" />
+          <Image width={30} height={30} src={favorite} alt="" />
         </button>
       </div>
 
       <Link href={`/products/${_id}`} className="flex justify-center">
-        <img className="object-cover " src={images} alt="" />
+        <Image width={250} height={250} className="object-cover " src={images} alt="" />
       </Link>
 
       <div className="flex-1 flex flex-col p-2">

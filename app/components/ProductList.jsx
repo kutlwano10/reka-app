@@ -12,6 +12,7 @@ const fetchProductsData = async () => {
     return response.json();
   } catch (error) {
     console.log("Error loading Products:", error)
+    return {product: []}
   }
 
   
@@ -19,45 +20,9 @@ const fetchProductsData = async () => {
 
 const ProductList =async () => {
 
-  const {products} = await fetchProductsData()
+  const {products = []} = await fetchProductsData()
  
 
-  // let [products, setProducts] = useState([]);
-  // let [loading, setLoading] = useState(false);
-  // /**To keep the state of the pages */
-  // let [pages, setPages] = useState(0);
-
-  // const getProducts = async (pageNumber) => {
-  //   try {
-  //     const data = await fetchData(pageNumber);
-  //     console.log('123')
-  //     if(pageNumber!=0){
-  //     setProducts((previousProducts) => [...previousProducts, ...data]);
-  //     }
-  //     else{
-  //       setProducts(data)
-  //     }
-  //     console.log('setp')
-  //   } catch (error) {
-  //     console.error("Error Fetching Products:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getProducts(0);
-  // }, []);
-
-  /**
-   *
-   * @returns number of products
-   */
-  // const handleShowMore = () => {
-  //   console.log("im clicked");
-  //   const nextPage = pages + 20;
-  //   setPages(nextPage);
-  //   getProducts(nextPage)
-
-  // };
 
   return (
     <div>

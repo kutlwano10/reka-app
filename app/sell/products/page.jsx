@@ -3,7 +3,7 @@ import Link from 'next/link'
 import cow from "../../public/meat.jpg"
 import Image from 'next/image'
 
-const products = () => {
+const Products = () => {
   return (
     <div className="">
   {/* Header */}
@@ -31,4 +31,4 @@ const products = () => {
   )
 }
 
-export default products
+export default Products

@@ -26,55 +26,55 @@ const SellerLayout = ({ children }) => {
     <div className="flex h-screen overflow-hidden">
       <Image onClick={handleSidebar} className="absolute flex top-7" src={menu} alt="" />
       {/* Sidebar */}
-      <aside id="sidebar" className="flex-1  flex h-screen bg-gray-50 shadow-lg  flex-col p-6">
-        {/* Logo */}
-        <Link
-          href="/"
-          className=" text-blue-600 font-extrabold text-3xl md:text-4xl mb-10"
-        >
-          Reka
-        </Link>
-
-        {/* Sidebar Links */}
-        <nav className="flex flex-col gap-6 text-gray-700">
-          <Link href="/sell/dashboard" className="flex items-center space-x-2">
-            <MdSpaceDashboard size={30}/>
-            <span>Dashboard</span>
-          </Link>
-          <Link href="/sell/products" className="flex items-center space-x-2">
-            <HiMiniShoppingBag size={30} />
-            <span>Products</span>
-          </Link>
-          <Link href="/sell/orders" className="flex items-center space-x-2">
-            <FaCartShopping size={30} />
-            <span>Orders</span>
-          </Link>
-          <Link href="/sell/customers" className="flex items-center space-x-2">
-            <IoPeople size={30} />
-            <span>Customers</span>
-          </Link>
-          <Link href="/sell/reports" className="flex items-center space-x-2">
-            <BsBarChartFill size={30} />
-            <span>Statistics</span>
-          </Link>
-          <Link href="/sell/reviews" className="flex items-center space-x-2">
-            <MdReviews size={30} />
-
-            <span>Reviews</span>
-          </Link>
-          <Link
-            href="/sell/transaction"
-            className="flex items-center space-x-2"
-          >
-            <HiCash size={30} />
-            <span>Transactions</span>
-          </Link>
-          <Link href="/sell/settings" className="flex items-center space-x-2">
-            <MdSettings size={30} />
-            <span>Settings</span>
-          </Link>
-        </nav>
-      </aside>
+      <div id="sidebar" className="hidden">
+          <aside  className="flex-[2]  flex h-screen bg-gray-50 shadow-lg  flex-col p-6">
+            {/* Logo */}
+            <Link
+              href="/sell"
+              className=" text-blue-600 font-extrabold text-3xl md:text-4xl mb-10"
+            >
+              Reka
+            </Link>
+            {/* Sidebar Links */}
+            <nav className="flex flex-col gap-6 text-gray-700">
+              <Link href="/sell/dashboard" className="flex items-center space-x-2">
+                <MdSpaceDashboard size={30}/>
+                <span>Dashboard</span>
+              </Link>
+              <Link href="/sell/products" className="flex items-center space-x-2">
+                <HiMiniShoppingBag size={30} />
+                <span>Products</span>
+              </Link>
+              <Link href="/sell/orders" className="flex items-center space-x-2">
+                <FaCartShopping size={30} />
+                <span>Orders</span>
+              </Link>
+              <Link href="/sell/customers" className="flex items-center space-x-2">
+                <IoPeople size={30} />
+                <span>Customers</span>
+              </Link>
+              <Link href="/sell/reports" className="flex items-center space-x-2">
+                <BsBarChartFill size={30} />
+                <span>Statistics</span>
+              </Link>
+              <Link href="/sell/reviews" className="flex items-center space-x-2">
+                <MdReviews size={30} />
+                <span>Reviews</span>
+              </Link>
+              <Link
+                href="/sell/transaction"
+                className="flex items-center space-x-2"
+              >
+                <HiCash size={30} />
+                <span>Transactions</span>
+              </Link>
+              <Link href="/sell/settings" className="flex items-center space-x-2">
+                <MdSettings size={30} />
+                <span>Settings</span>
+              </Link>
+            </nav>
+          </aside>
+      </div>
 
       {/* Main Content Area */}
       <main className=" flex-[3] bg-white pb-20 p-2">

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { CldUploadWidget } from 'next-cloudinary';
 
 const addProduct = () => {
   const [title, setTitle] = useState("");
@@ -10,13 +11,52 @@ const addProduct = () => {
 
   const router = useRouter()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!title || !description) {
-      alert("Insert details");
-    }
+
+  const  handleImageUpload = async(e) => {
+
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'PresetNyana'); // unsigned preset
 
     try {
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log(data.url)
+      setImages(data.url);  // The uploaded image URL
+    } catch (err) {
+      console.error(err);
+    } 
+
+
+
+    // console.log(result)
+    // if (result && result.event === 'success') {
+    //   setImages(result.info.secure_url);
+    //   console.log('open')
+    //   console.log(images)
+    // }
+    // console.log('lasthv')
+  };
+
+
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+    // if (!title || !description|| !images || !price) {
+    //   alert("Insert details");
+    //   return
+    // }
+ 
+// console.log(formData)
+    try {
+      console.log(images)
       const res = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: {
@@ -67,21 +107,32 @@ const addProduct = () => {
       />
 
       <label className="block font-medium mb-2">Images</label>
-      <div className="flex space-x-2 mb-4">
+      <input type="file" onChange={handleImageUpload} />
+            {/* <CldUploadWidget
+        cloudName={process.env.CLOUDINARY_CLOUD_NAME}
+        uploadPreset="PresetNyana"
+        onSuccess={handleImageUpload}
+        onError={(error) => console.error(error)}
+      >
+        {({ open }) => (
+          <button type="button" onClick={open}>
+            Upload Image
+          </button>
+        )}
+      </CldUploadWidget> */}
+      {/* <div className="flex space-x-2 mb-4">
         <input
           onChange={(e) => {
             const file = e.target.files[0];
-            const imageUrl = URL.createObjectURL(file);
-            setImages(imageUrl);
+            // const imageUrl = URL.createObjectURL(file);
+            setImages(file);
           }}
           files={images}
           type="file"
         />
 
-        {/* <button className="w-16 h-16 bg-gray-100 border-2 border-dashed border-gray-300 rounded-md">
-          Upload
-        </button> */}
-      </div>
+       
+      </div> */}
 
       <label htmlFor="product-tags" className="block font-medium mb-2">
         Tags

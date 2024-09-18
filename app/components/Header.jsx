@@ -34,7 +34,7 @@ const Header = () => {
             <Link href="">
               <Image className=" w-6" src={search} alt="" />
             </Link>
-            <Link href="/sell/dashboard">
+            <Link href="/sell">
               <Image className=" w-8" src={dashboard} alt="" />
             </Link>
             {/* cart */}

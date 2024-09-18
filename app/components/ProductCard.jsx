@@ -1,12 +1,14 @@
-
+'use client'
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import favorite from "../public/favorite.svg";
 import cart from "../public/cart.svg";
+import { CldImage } from 'next-cloudinary';
 
 const ProductCard = ( props ) => {
-  const { title, images, category, price, _id} = props;
+  const { title,description, images, price, _id} = props;
+  
    return (
     <div className="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5  overflow-hidden">
       <div className="flex align-center p-2">
@@ -17,7 +19,15 @@ const ProductCard = ( props ) => {
       </div>
 
       <Link href={`/products/${_id}`} className="flex justify-center">
-        <Image width={250} height={250} className="object-cover " src={images} alt="" />
+      <CldImage
+        cloudname={process.env.CLOUDINARY_CLOUD_NAME}
+        publicid={images}
+        alt="img"
+        src={images}
+        width="300"
+        height="300"
+        crop="scale"
+      />
       </Link>
 
       <div className="flex-1 flex flex-col p-2">
@@ -37,7 +47,7 @@ const ProductCard = ( props ) => {
         <div className="flex mt-1 space-x-2">
           <div className="justify-start flex-1">
             <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-              {category}
+              {description}
             </span>
           </div>
         </div>

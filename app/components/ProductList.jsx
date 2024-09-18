@@ -34,7 +34,7 @@ const ProductList =async () => {
     <div>
       <div>
         <div className=" px-[8%] md:px-0 max-w-xl md:mx-auto grid gap-4 grid-cols-2 lg:grid-cols-5 justify-center md:grid-cols-3 lg:mx-[9%] items-center lg:max-w-none my-4">
-          {products.products.map((product) => (
+          {products.map((product) => (
             <ProductCard key={product._id} {...product} />
           ))}
         </div>

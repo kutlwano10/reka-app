@@ -3,13 +3,19 @@ import ProductCard from "./ProductCard";
 
 // const API_BASE_URL = "https://http://localhost:3000/api/products";
 
+// const response = await fetch('http://localhost:3000/api/products', { method: 'DELETE' });
+
 const fetchProductsData = async () => {
+  console.log('start')
   try {
     const response = await fetch(`http://localhost:3000/api/products`, { cache: "no-store" }); //cache is to update the new Products
+    console.log('1234567')
     if(!response.ok) {
+      // console.log(response.ok)
       throw Error ("Failed to Fetch Products")
     }
-    return response.json();
+    let data = await response.json();
+    return data
   } catch (error) {
     console.log("Error loading Products:", error)
     return {product: []}

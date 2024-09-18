@@ -1,3 +1,4 @@
+import { Providers } from "./GlobalRedux/Provider";
 import "./globals.css";
 
 // import Footer from "./components/Footer";
@@ -11,11 +12,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <Providers>
         
         <main className="">{children}</main>
         {/* <div className="">
           <Footer />
         </div> */}
+        </Providers>
       </body>
     </html>
   );

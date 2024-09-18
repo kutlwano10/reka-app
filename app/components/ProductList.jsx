@@ -13,6 +13,7 @@ const fetchProductsData = async () => {
     if(!response.ok) {
       // console.log(response.ok)
       throw Error ("Failed to Fetch Products")
+      
     }
     let data = await response.json();
     return data

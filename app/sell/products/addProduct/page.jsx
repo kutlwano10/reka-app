@@ -28,7 +28,8 @@ const addProduct = () => {
       });
 
       const data = await res.json();
-      setImages(data.secure_url);  // The uploaded image URL
+      console.log(data.url)
+      setImages(data.url);  // The uploaded image URL
     } catch (err) {
       console.error(err);
     } 
@@ -56,7 +57,7 @@ const addProduct = () => {
 // console.log(formData)
     try {
       console.log(images)
-      const res = await fetch("http://localhost:3001/api/products", {
+      const res = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: {
           "constent-type": "application/json",

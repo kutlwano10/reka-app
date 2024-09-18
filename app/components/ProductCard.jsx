@@ -20,8 +20,8 @@ const ProductCard = ( props ) => {
 
       <Link href={`/products/${_id}`} className="flex justify-center">
       <CldImage
-        cloudName={process.env.CLOUDINARY_CLOUD_NAME}
-        publicId={images}
+        cloudname={process.env.CLOUDINARY_CLOUD_NAME}
+        publicid={images}
         alt="img"
         src={images}
         width="300"

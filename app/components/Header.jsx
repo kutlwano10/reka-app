@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import cart from "../public/cart.svg";
@@ -7,6 +7,7 @@ import menu from "../public/menu-4.svg";
 import search from "../public/search.svg";
 import dashboard from "../public/dashboard.svg";
 import Footer from "./Footer";
+import Modal from "./CartModal";
 
 const Header = () => {
   const toggleNavbar = () => {
@@ -16,6 +17,12 @@ const Header = () => {
       : dropDown.classList.add("hidden");
   };
 
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+  
   return (
     <>
       <header className=" w-full fixed top-0 bg-white shadow-md z-10">
@@ -38,20 +45,23 @@ const Header = () => {
               <Image className=" w-8" src={dashboard} alt="" />
             </Link>
             {/* cart */}
-            <Link href="" className="relative">
+            <button onClick={toggleCart} className="relative cursor-pointer">
               <div className="t-0 absolute left-3 -top-4">
                 <p className="flex h-2 w-2 items-center  justify-center rounded-full bg-red-500 p-3 text-xs text-white">
-                  2
+                
                 </p>
               </div>
               <Image className="w-7" src={cart} alt="" />
-            </Link>
+            </button>
           </div>
         </nav>
         {/* Menu sidebar */}
         <div className="w-full hidden " id="navbar-dropdown">
           <Footer/>
         </div>
+
+          {/* Cart Modal */}
+          <Modal isOpen={isCartOpen} onClose={toggleCart} />
       </header>
     </>
   );

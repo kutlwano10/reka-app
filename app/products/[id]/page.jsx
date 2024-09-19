@@ -67,6 +67,7 @@ export default async function productDetails({ params }) {
                         className="bg-[#87e64b] text-gray-800 px-2 py-1 rounded-full text-sm"
                       >
                         {tag}
+                        
                       </span>
                     ))}
                   </div>

@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import { CartProvider } from '../app/components/CartContext';
 // import Footer from "./components/Footer";
 
 export const metadata = {
@@ -11,11 +11,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        
+        <CartProvider>
         <main className="">{children}</main>
         {/* <div className="">
           <Footer />
         </div> */}
+        </CartProvider>
       </body>
     </html>
   );

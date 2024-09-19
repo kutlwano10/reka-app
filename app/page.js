@@ -6,6 +6,7 @@ import search from "./public/search.svg";
 import vegFruits from "./public/veg&fruits.jpg";
 import Filter from "./components/Filter";
 import Header from "./components/Header";
+import { CartProvider } from "../app/components/CartContext";
 
 export default function Home() {
   // useEffect(() => {
@@ -13,6 +14,7 @@ export default function Home() {
   // });
   return (
     <div className="">
+        
       <div>
         <Header />
       </div>
@@ -35,6 +37,8 @@ export default function Home() {
         </div>
         <ProductList />
             </div>
+          
       </div>
+      
   );
 }

@@ -8,12 +8,12 @@ import { NextResponse } from "next/server";
  */
 
 export async function POST(request) {
-  const { title, description, images , price} = await request.json();
+  const { title, description,category, images , price} = await request.json();
   await connectToMongoDB();
   /**
    * This will create the new Products
    */
-  await Product.create({ title, description , images, price});
+  await Product.create({ title, description ,category, images, price});
   return NextResponse.json({message: "Product Created"} , {status: 201})
 }
 
@@ -21,11 +21,27 @@ export async function POST(request) {
  * 
  * @returns all the List of Products
  */
-export async function GET() {
-    await connectToMongoDB()
-    const products = await Product.find()
-    return NextResponse.json({products})
+// export async function GET() {
+//     await connectToMongoDB()
+//     const products = await Product.find()
+//     return NextResponse.json({products})
 
+// }
+
+
+export async function GET(request) {
+  // Parse the query parameters from the request URL
+  const { searchParams } = new URL(request.url);
+  const category = searchParams.get('category'); // Get the 'category' query param
+   console.log(category,'123')
+  await connectToMongoDB();
+
+  // Find products by category if the category parameter is provided, else return all products
+  const products = category!='default'
+    ? await Product.find({ category:category })  // Filter products by category
+    : await Product.find();             // Return all products if no category is specified
+
+  return NextResponse.json({ products });
 }
 
 export async function DELETE(request) {

@@ -13,7 +13,6 @@ export async function getProductDetails(productId) {
     throw Error("Failed to fetch Data");
   }
   let data = await response.json();
-  console.log(data)
   return data
 }
 
@@ -29,12 +28,13 @@ export default async function productDetails({ params }) {
      */
    
   const {product} = await getProductDetails(params.id);
-  console.log(product.title)
+  // console.log(product)
 
   return (
     <main>
       {/* <Header/> */}
       <div key={product._id}>
+        <img src={product.images} alt='img'/>
         <h1>{product.title}</h1>
         <p>{product.price}</p>
 

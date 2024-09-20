@@ -6,6 +6,7 @@ import { CldUploadWidget } from 'next-cloudinary';
 const addProduct = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const [images, setImages] = useState("");
   const [price, setPrice] = useState("");
 
@@ -34,25 +35,16 @@ const addProduct = () => {
       console.error(err);
     } 
 
-
-
-    // console.log(result)
-    // if (result && result.event === 'success') {
-    //   setImages(result.info.secure_url);
-    //   console.log('open')
-    //   console.log(images)
-    // }
-    // console.log('lasthv')
   };
 
 
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    // if (!title || !description|| !images || !price) {
-    //   alert("Insert details");
-    //   return
-    // }
+    if (!title || !category || !images || !price) {
+      alert("Insert details");
+      return
+    }
  
 // console.log(formData)
     try {
@@ -62,7 +54,7 @@ const addProduct = () => {
         headers: {
           "constent-type": "application/json",
         },
-        body: JSON.stringify({ title, description, images, price }),
+        body: JSON.stringify({ title, description,category, images, price }),
       });
       if(res.ok) {
         router.push("/sell/products")
@@ -108,69 +100,30 @@ const addProduct = () => {
 
       <label className="block font-medium mb-2">Images</label>
       <input type="file" onChange={handleImageUpload} />
-            {/* <CldUploadWidget
-        cloudName={process.env.CLOUDINARY_CLOUD_NAME}
-        uploadPreset="PresetNyana"
-        onSuccess={handleImageUpload}
-        onError={(error) => console.error(error)}
-      >
-        {({ open }) => (
-          <button type="button" onClick={open}>
-            Upload Image
-          </button>
-        )}
-      </CldUploadWidget> */}
-      {/* <div className="flex space-x-2 mb-4">
-        <input
-          onChange={(e) => {
-            const file = e.target.files[0];
-            // const imageUrl = URL.createObjectURL(file);
-            setImages(file);
-          }}
-          files={images}
-          type="file"
-        />
-
-       
-      </div> */}
-
-      <label htmlFor="product-tags" className="block font-medium mb-2">
-        Tags
-      </label>
-      <div className="flex flex-wrap gap-2 mb-4">
-        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
-          Clothes
-        </span>
-        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
-          Men
-        </span>
-        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
-          Fashion
-        </span>
-      </div>
-
+    
       <div className="flex space-x-4 mb-4">
         <div className="flex-1">
-          <label htmlFor="category-select" className="block font-medium mb-2">
-            Category
-          </label>
-          <select id="category-select" className="w-full p-2 border rounded-md">
-            <option value="">Select</option>
-          </select>
-        </div>
-        <div className="flex-1">
-          <label
-            htmlFor="subcategory-select"
-            className="block font-medium mb-2"
-          >
-            Sub category
-          </label>
-          <select
-            id="subcategory-select"
-            className="w-full p-2 border rounded-md"
-          >
-            <option value="">Select</option>
-          </select>
+        <label htmlFor="category-select" className="block font-medium mb-2">
+        Category
+      </label>
+      <select
+        id="category-select"
+        className="w-full p-2 border rounded-md"
+        value={category}
+        onChange={(e)=>setCategory(e.target.value)}
+      >
+        <option value="">Select</option>
+        <option value="Kasi Food">Kasi Food</option>
+        <option value="Meat & Fish">Meat & Fish</option>
+        <option value="Clean Water">Clean Water</option>
+        <option value="Gardening">Gardening</option>
+        <option value="Veg & Fruits">Veg & Fruits</option>
+        <option value="Live Stock">Live Stock</option>
+        <option value="Pets">Pets</option>
+        <option value="Minerals">Minerals</option>
+      </select>
+
+      <p className="mt-2">Selected Category: {category}</p>
         </div>
       </div>
 

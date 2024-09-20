@@ -34,6 +34,7 @@ export default function Home() {
           </div>
         </div>
         <ProductList />
+        {/* <DisplayProducts/> */}
             </div>
       </div>
   );

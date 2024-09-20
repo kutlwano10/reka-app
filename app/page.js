@@ -6,7 +6,6 @@ import search from "./public/search.svg";
 import vegFruits from "./public/veg&fruits.jpg";
 import Filter from "./components/Filter";
 import Header from "./components/Header";
-import DisplayProducts from "./components/DisplayProducts";
 
 export default function Home() {
   // useEffect(() => {

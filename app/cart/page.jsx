@@ -29,8 +29,6 @@ const CartPage = () => {
                   />
                   <div>
                     <p className="text-lg font-medium">{item.title}</p>
-                    <p className="text-gray-500">Size: {item.size}</p>
-                    <p className="text-gray-500">Color: {item.color}</p>
                   </div>
                 </div>
                 <div className="flex items-center">

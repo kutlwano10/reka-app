@@ -6,6 +6,8 @@ import search from "./public/search.svg";
 import vegFruits from "./public/veg&fruits.jpg";
 import Filter from "./components/Filter";
 import Header from "./components/Header";
+import { Suspense } from "react";
+import loading from "./loading";
 
 export default function Home() {
   // useEffect(() => {
@@ -33,8 +35,9 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <Suspense fallback={<loading/>}>
         <ProductList />
-        {/* <DisplayProducts/> */}
+        </Suspense>
             </div>
       </div>
   );

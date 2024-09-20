@@ -10,6 +10,7 @@ const ProductList = () => {
 
   useEffect(() => {
     const fetchProductsData = async () => {
+       await new Promise(resolve=>setTimeout(resolve,1000))
       try {
         const response = await fetch(`http://localhost:3000/api/products/?category=${filter}`, { cache: "no-store" });
         if (!response.ok) {
@@ -32,7 +33,13 @@ const ProductList = () => {
           {products.length > 0 ? (
             products.map((product) => <ProductCard key={product._id} {...product} />)
           ) : (
-            <p>No products found for this category.</p>
+            <div className="min-h-screen flex justify-center items-center">
+            <div className="flex justify-center items-center">
+             
+              {/* Tailwind CSS Spinner */}
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+            </div>
+          </div>
           )}
         </div>
       </div>
@@ -44,4 +51,5 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
 

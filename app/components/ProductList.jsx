@@ -10,8 +10,9 @@ const ProductList = () => {
 
   useEffect(() => {
     const fetchProductsData = async () => {
+       await new Promise(resolve=>setTimeout(resolve,1000))
       try {
-        const response = await fetch(`http://localhost:3000/api/products/?category=${filter}`, { cache: "no-store" });
+        const response = await fetch(`http://localhost:3000/api/product/?category=${filter}`, { cache: "no-store" });
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
@@ -28,11 +29,17 @@ const ProductList = () => {
   return (
     <div>
       <div>
-        <div className=" px-[8%] md:px-0 max-w-xl md:mx-auto grid gap-4 grid-cols-2 lg:grid-cols-5 justify-center md:grid-cols-3 lg:mx-[9%] items-center lg:max-w-none my-4">
+        <div className=" px-[2%] md:px-0 max-w-xl md:mx-auto grid gap-4 grid-cols-2 lg:grid-cols-5 justify-center md:grid-cols-3 lg:mx-[9%] items-center lg:max-w-none my-4">
           {products.length > 0 ? (
             products.map((product) => <ProductCard key={product._id} {...product} />)
           ) : (
-            <p>No products found for this category.</p>
+            <div className="min-h-screen flex justify-center items-center">
+            <div className="flex justify-center items-center">
+             
+              {/* Tailwind CSS Spinner */}
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+            </div>
+          </div>
           )}
         </div>
       </div>
@@ -44,4 +51,5 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
 

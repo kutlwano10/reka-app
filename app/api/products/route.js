@@ -33,9 +33,9 @@ export async function GET(request) {
   // Parse the query parameters from the request URL
   const { searchParams } = new URL(request.url);
   const category = searchParams.get('category'); // Get the 'category' query param
-   console.log(category,'123')
+  //  console.log(category,'123')
   await connectToMongoDB();
-
+  // console.log(category)
   // Find products by category if the category parameter is provided, else return all products
   const products = category!='default'
     ? await Product.find({ category:category })  // Filter products by category

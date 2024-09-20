@@ -22,7 +22,7 @@ const Filter = () => {
       { src: meat, label: "Minerals" },
       { src: meat, label: "Pets" },
       { src: meat, label: "Live Stock" },
-      { src: meat, label: "Veg and Fruits" },
+      { src: meat, label: "Fruits and Veg" },
       { src: meat, label: "Gardening" },
       { src: meat, label: "Clean Water" },
       { src: meat, label: "Meat and Fish" },

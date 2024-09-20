@@ -7,14 +7,15 @@ import ProductCard from "./ProductCard";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const filter = useSelector((state) => state.filter.filter); // Get filter state from Redux
-
+  
   useEffect(() => {
     const fetchProductsData = async () => {
-       await new Promise(resolve=>setTimeout(resolve,1000))
+      //  await new Promise(resolve=>setTimeout(resolve,1000))
       try {
-        const response = await fetch(`http://localhost:3000/api/product/?category=${filter}`, { cache: "no-store" });
+        const response = await fetch(`http://localhost:3000/api/products/?category=${filter}`, { cache: "no-store" });
         if (!response.ok) {
           throw new Error("Failed to fetch products");
+          
         }
         const data = await response.json();
         setProducts(data.products); // Set the fetched products to the state

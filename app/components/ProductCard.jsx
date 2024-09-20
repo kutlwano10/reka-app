@@ -46,6 +46,7 @@ const ProductCard = ( props ) => {
             <h2>R{price}</h2>
           </div>
         </div>
+        
         <div className="flex mt-1 space-x-2">
           <div className="justify-start flex-1">
             <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
@@ -54,7 +55,7 @@ const ProductCard = ( props ) => {
           </div>
         </div>
         <div className="flex justify-end gap-3 space-x-2">
-          <button onClick={handleAddToCart}>
+          <button>
             <Image className="w-8" width={100} height={100}src={cart} alt=""  />
           </button>
         </div>

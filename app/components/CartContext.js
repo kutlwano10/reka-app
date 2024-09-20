@@ -11,6 +11,7 @@ export const useCart = () => {
 // CartProvider component that wraps your app
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  
 
   // Function to add items to the cart
   const addToCart = (product) => {

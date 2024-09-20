@@ -49,7 +49,7 @@ const Header = () => {
             {/* cart */} <button onClick={toggleCart} className="relative cursor-pointer">
               <div className="t-0 absolute left-3 -top-4">
                 <p className="flex h-2 w-2 items-center  justify-center rounded-full bg-red-500 p-3 text-xs text-white">
-                  
+                  2
                 </p>
               </div>
               <Image className="w-7" src={cart} alt="" />

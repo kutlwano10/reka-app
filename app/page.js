@@ -5,6 +5,8 @@ import vegFruits from "./public/veg&fruits.jpg";
 import Filter from "./components/Filter";
 import Header from "./components/Header";
 import Search from "./components/SearchBar";
+import { Suspense } from "react";
+import loading from "./loading";
 
 export default function Home() {
   // useEffect(() => {
@@ -21,9 +23,10 @@ export default function Home() {
           <Image className="h-[20rem] object-cover" src={vegFruits} alt="" />
          <Search />
         </div>
+        <Suspense fallback={<loading/>}>
         <ProductList />
-        {/* <DisplayProducts/> */}
+        </Suspense>
+            </div>
       </div>
-    </div>
   );
 }

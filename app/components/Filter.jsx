@@ -22,10 +22,10 @@ const Filter = () => {
       { src: meat, label: "Minerals" },
       { src: meat, label: "Pets" },
       { src: meat, label: "Live Stock" },
-      { src: meat, label: "Veg & Fruits" },
+      { src: meat, label: "Fruits and Veg" },
       { src: meat, label: "Gardening" },
       { src: meat, label: "Clean Water" },
-      { src: meat, label: "Meat & Fish" },
+      { src: meat, label: "Meat and Fish" },
       { src: meat, label: "Kasi Food" },
     ].map((category, index) => (
       <div key={index} onClick={()=>filterCate(category.label)} className="flex-shrink-0 text-center">

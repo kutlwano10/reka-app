@@ -5,6 +5,7 @@ import Image from "next/image";
 import favorite from "../public/favorite.svg";
 import cart from "../public/cart.svg";
 import { CldImage } from 'next-cloudinary';
+import { useCart } from "../components/CartContext";
 
 const ProductCard = ( props ) => {
   const { title,description, images, price,category, _id} = props;
@@ -53,7 +54,7 @@ const ProductCard = ( props ) => {
           </div>
         </div>
         <div className="flex justify-end gap-3 space-x-2">
-          <button>
+          <button onClick={handleAddToCart}>
             <Image className="w-8" width={100} height={100}src={cart} alt=""  />
           </button>
         </div>

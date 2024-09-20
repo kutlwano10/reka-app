@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
         <main className="">{children}</main>
         {/* <div className="">
           <Footer />
-          
         </div> */}
           </CartProvider>
         </Providers>

@@ -28,8 +28,13 @@ export default async function productDetails({ params }) {
    * The params will get the id of the routed Product Detail using the [id] folder
    */
 
+  function addToCart(item){
+
+  }
+
   const { product } = await getProductDetails(params.id);
   console.log(product.title);
+  
 
   return (
     <main>
@@ -74,7 +79,7 @@ export default async function productDetails({ params }) {
               )}
               </div>
               <div className="flex gap-4">
-                <button className="flex-1 bg-[#87e64b] hover:bg-[#2a4b15] text-white py-3 px-6 rounded-lg flex items-center justify-center transition duration-300">
+                <button  className="flex-1 bg-[#87e64b] hover:bg-[#2a4b15] text-white py-3 px-6 rounded-lg flex items-center justify-center transition duration-300">
                   <FaShoppingCart className="mr-2" />
                   Add to Cart
                 </button>

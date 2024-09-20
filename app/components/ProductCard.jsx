@@ -7,7 +7,7 @@ import cart from "../public/cart.svg";
 import { CldImage } from 'next-cloudinary';
 
 const ProductCard = ( props ) => {
-  const { title,description, images, price, _id} = props;
+  const { title,description, images, price,category, _id} = props;
   
    return (
     <div className="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5  overflow-hidden">
@@ -47,7 +47,7 @@ const ProductCard = ( props ) => {
         <div className="flex mt-1 space-x-2">
           <div className="justify-start flex-1">
             <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
-              {description}
+              {category}
             </span>
           </div>
         </div>

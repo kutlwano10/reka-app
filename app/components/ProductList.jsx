@@ -11,7 +11,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/products/?category=${filter}`, { cache: "no-store" });
+        const response = await fetch(`http://localhost:3000/api/product/?category=${filter}`, { cache: "no-store" });
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }

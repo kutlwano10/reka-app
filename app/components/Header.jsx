@@ -43,7 +43,7 @@ const Header = () => {
             <Link href="">
               <Image className=" w-6" src={search} alt="" />
             </Link>
-            <Link href="/sell">
+            <Link href="/profile">
               <Image className=" w-8" src={dashboard} alt="" />
             </Link>
             {/* cart */} <button onClick={toggleCart} className="relative cursor-pointer">

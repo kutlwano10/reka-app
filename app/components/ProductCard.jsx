@@ -54,7 +54,7 @@ const ProductCard = ( props ) => {
           </div>
         </div>
         <div className="flex justify-end gap-3 space-x-2">
-          <button onClick={handleAddToCart}>
+          <button >
             <Image className="w-8" width={100} height={100}src={cart} alt=""  />
           </button>
         </div>

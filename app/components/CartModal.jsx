@@ -7,6 +7,9 @@ const CartModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const { cartItems, removeFromCart } = useCart();
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-end z-50">
@@ -47,11 +50,24 @@ const CartModal = ({ isOpen, onClose }) => {
                     >
                       🗑
                     </button>
+
+                    
                   </div>
                 </li>
+                
               ))}
             </ul>
+
+            
           )}
+
+           {/* Cart Summary */}
+           <div className="border-t pt-4 border-gray-200">
+            <div className="flex justify-between font-bold text-xl">
+              <span>Total</span>
+              <span>R{calculateTotalPrice().toFixed(2)}</span>
+            </div>
+          </div>
           <Link
             href="/"
             className="block mt-6 text-center text-gray-600 hover:underline"

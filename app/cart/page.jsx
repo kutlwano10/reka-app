@@ -7,6 +7,10 @@ import Link from "next/link";
 const CartPage = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
 
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
+
   return (
     <div className="container mt-28 mx-auto p-8">
       <h1 className="text-3xl font-bold text-center mb-8">Your Cart</h1>
@@ -51,10 +55,11 @@ const CartPage = () => {
             ))}
           </ul>
 
-          {/* Cart Summary */}
+           {/* Cart Summary */}
           <div className="border-t pt-4 border-gray-200">
             <div className="flex justify-between font-bold text-xl">
               <span>Total</span>
+              <span>R{calculateTotalPrice().toFixed(2)}</span>
             </div>
           </div>
 

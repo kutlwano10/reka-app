@@ -1,5 +1,4 @@
 'use client'; // Add this to make the component client-side
-
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
@@ -7,13 +6,15 @@ import ProductCard from "./ProductCard";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const filter = useSelector((state) => state.filter.filter); // Get filter state from Redux
+  const search = useSelector((state) => state.filter.search1);
 
   useEffect(() => {
     const fetchProductsData = async () => {
        await new Promise(resolve=>setTimeout(resolve,1000))
       try {
-        const response = await fetch(`http://localhost:3000/api/products/?category=${filter}`, { cache: "no-store" });
-        // console.log(response)
+        console.log('123')
+        const response = await fetch(`http://localhost:3000/api/products/?category=${filter}&search=${search}`, { cache: "no-store" });
+       // console.log(response)
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
@@ -25,7 +26,7 @@ const ProductList = () => {
     };
 
     fetchProductsData(); // Re-fetch the products whenever the filter changes
-  }, [filter]); // Trigger fetch when `filter` changes
+  }, [filter,search]); // Trigger fetch when `filter` changes
 
   return (
     <div>

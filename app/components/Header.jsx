@@ -8,8 +8,10 @@ import search from "../public/search.svg";
 import dashboard from "../public/dashboard.svg";
 import Footer from "./Footer";
 import Modal from "./CartModal";
+import { useCart } from "../CartContext";
 
 const Header = () => {
+  const { cartItems } = useCart();
   const toggleNavbar = () => {
     const dropDown = document.getElementById("navbar-dropdown");
     dropDown.classList.contains("hidden")
@@ -24,6 +26,7 @@ const Header = () => {
     setIsCartOpen(!isCartOpen);
   };
   
+    const totalItemsInCart = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>
@@ -46,13 +49,16 @@ const Header = () => {
             <Link href="/sell">
               <Image className=" w-8" src={dashboard} alt="" />
             </Link>
-            {/* cart */} <button onClick={toggleCart} className="relative cursor-pointer">
-              <div className="t-0 absolute left-3 -top-4">
+            {/* cart */} 
+            <button onClick={toggleCart} className="relative cursor-pointer">
+            {totalItemsInCart > 0 && (
+              <div className="t-0 absolute left-3 -top-0">
                 <p className="flex h-2 w-2 items-center  justify-center rounded-full bg-red-500 p-3 text-xs text-white">
-                  2
+                {totalItemsInCart}
                 </p>
               </div>
-              <Image className="w-7" src={cart} alt="" />
+              )},
+              <Image className="w-7 relative -top-3" src={cart} alt="" />
             </button>
           </div>
         </nav>

@@ -1,6 +1,6 @@
 import { Providers } from "./GlobalRedux/Provider";
 import "./globals.css";
-import { CartProvider } from '../app/components/CartContext';
+import { CartProvider } from './CartContext';
 import Header from "./components/Header";
 
 // import Footer from "./components/Footer";

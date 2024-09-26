@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useCart } from "../components/CartContext";
+import { useCart } from "../CartContext";
 import Link from "next/link";
 
 const CartModal = ({ isOpen, onClose }) => {
@@ -70,6 +70,7 @@ const CartModal = ({ isOpen, onClose }) => {
           </div>
           <Link
             href="/"
+            onClick={onClose}
             className="block mt-6 text-center text-gray-600 hover:underline"
           >
             Continue Shopping

@@ -5,7 +5,7 @@ import Image from "next/image";
 import favorite from "../public/favorite.svg";
 import cart from "../public/cart.svg";
 import { CldImage } from "next-cloudinary";
-import { useCart } from "../components/CartContext";
+import { useCart } from "../CartContext";
 
 const ProductCard = (props) => {
   const { title, description, images, price, category, _id } = props;

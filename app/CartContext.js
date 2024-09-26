@@ -6,7 +6,14 @@ const CartContext = createContext();
 
 // CartProvider component to wrap your app and provide cart state
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const storedCartItems = localStorage.getItem("cartItems");
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   // Add an item to the cart
   const addToCart = (item) => {

@@ -24,7 +24,7 @@ const Header = () => {
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
-
+  
   const totalItemsInCart = cartItems.reduce(
     (total, item) => total + item.quantity,
     0

@@ -7,15 +7,16 @@ import ProductCard from "./ProductCard";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const filter = useSelector((state) => state.filter.filter); // Get filter state from Redux
-
+  
   useEffect(() => {
     const fetchProductsData = async () => {
-       await new Promise(resolve=>setTimeout(resolve,1000));
+      console.log('123')
       try {
         const response = await fetch(`https://reka-app-three.vercel.app/api/products/?category=${filter}`, { cache: "no-store" });
-        // console.log(response)
+        console.log(response)
         if (!response.ok) {
           throw new Error("Failed to fetch products");
+          
         }
         const data = await response.json();
         setProducts(data.products); // Set the fetched products to the state

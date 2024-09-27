@@ -9,7 +9,7 @@ import { useCart } from "../components/CartContext";
 
 const ProductCard = ( props ) => {
   const { title,description, images, price,category, _id} = props;
-  console.log(category)
+  // console.log(category)
   
    return (
     <div className="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5  overflow-hidden">
@@ -54,7 +54,7 @@ const ProductCard = ( props ) => {
           </div>
         </div>
         <div className="flex justify-end gap-3 space-x-2">
-          <button onClick={handleAddToCart}>
+          <button >
             <Image className="w-8" width={100} height={100}src={cart} alt=""  />
           </button>
         </div>

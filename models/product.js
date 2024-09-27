@@ -7,6 +7,7 @@ const productSchema = new Schema(
     category:String,
     images : String,
     price : String,
+    
   },
   { timestamps: true }
 );

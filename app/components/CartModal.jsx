@@ -3,9 +3,10 @@ import { useCart } from "../components/CartContext";
 import Link from 'next/link';
 
 const CartModal = ({isOpen, onClose}) => {
+  const { cartItems, removeFromCart } = useCart(); 
     if (!isOpen) return null;
 
-    const { cartItems, removeFromCart } = useCart(); 
+    
     return (
 
 

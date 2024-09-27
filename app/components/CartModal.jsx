@@ -3,10 +3,11 @@ import React from "react";
 import { useCart } from "../CartContext";
 import Link from "next/link";
 
-const CartModal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-
+const CartModal = ({isOpen, onClose}) => {
   const { cartItems, removeFromCart } = useCart();
+    if (!isOpen) return null;
+
+  
   const calculateTotalPrice = () => {
     return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   };

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useCart } from "@/app/components/CartContext";
 export async function getProductDetails(productId) {
   const response = await fetch(
-    `http://localhost:3000/api/products/${productId}`
+    `https://reka-app-three.vercel.app/api/products/${productId}`
   );
 
   if (!response.ok) {

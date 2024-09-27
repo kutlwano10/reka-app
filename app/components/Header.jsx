@@ -19,14 +19,16 @@ const Header = () => {
       : dropDown.classList.add("hidden");
   };
 
-  
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
-  
-    const totalItemsInCart = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  const totalItemsInCart = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   return (
     <>
@@ -46,28 +48,31 @@ const Header = () => {
             <Link href="">
               <Image className=" w-6" src={search} alt="" />
             </Link>
-          
-              <Image className=" w-8" src={dashboard} alt="" />
-            
-            {/* cart */} 
+
+            <Image className=" w-8" src={dashboard} alt="" />
+
+            {/* cart */}
             <button onClick={toggleCart} className="relative cursor-pointer">
-            {totalItemsInCart > 0 && (
-              <div className="t-0 absolute left-3 -top-0">
-                <p className="flex h-2 w-2 items-center  justify-center rounded-full bg-red-500 p-3 text-xs text-white">
-                {totalItemsInCart}
-                </p>
+              {/* {console.log(totalItemsInCart)} */}
+
+              <div className="t-0 absolute left-3 -top-4">
+                {totalItemsInCart >= 0 && (
+                  <p className="flex h-2 w-2 items-center  justify-center rounded-full bg-red-500 p-3 text-xs text-white">
+                    {totalItemsInCart}
+                  </p>
+                )}
               </div>
-              )},
-              <Image className="w-7 relative -top-3" src={cart} alt="" />
+
+              <Image className="w-7 " src={cart} alt="" />
             </button>
           </div>
         </nav>
         {/* Menu sidebar */}
         <div className="w-full hidden " id="navbar-dropdown">
-          <Footer/>
+          <Footer />
         </div>
-          {/* Cart Modal */}
-          <Modal isOpen={isCartOpen} onClose={toggleCart} />
+        {/* Cart Modal */}
+        <Modal isOpen={isCartOpen} onClose={toggleCart} />
       </header>
     </>
   );

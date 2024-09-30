@@ -9,7 +9,6 @@ import { useCart } from "../CartContext";
 
 const ProductCard = (props) => {
   const { title, description, images, price, category, _id } = props;
-  console.log(category);
 
   const { addToCart } = useCart();
 

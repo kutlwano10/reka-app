@@ -29,19 +29,51 @@ export async function POST(request) {
 // }
 
 
-export async function GET(request) {
-  // Parse the query parameters from the request URL
-  const { searchParams } = new URL(request.url);
+export async function GET(req,res) {
+  const { searchParams } = new URL(req.url);
   const category = searchParams.get('category'); // Get the 'category' query param
-  //  console.log(category,'123')
-  await connectToMongoDB();
-  // console.log(category)
-  // Find products by category if the category parameter is provided, else return all products
-  const products = category!='default'
-    ? await Product.find({ category:category })  // Filter products by category
-    : await Product.find();             // Return all products if no category is specified
+  const search = searchParams.get('search');
 
-  return NextResponse.json({ products });
+  try {
+    await connectToMongoDB();
+
+    // Initialize query object
+    let query = {};
+
+    // Filter by category if provided and not 'default'
+    if (category && category !== 'default') {
+      query.category = category;
+    }
+
+    // Filter by search string if provided and not null
+    if (search && search !== 'null') {
+      query.title = { $regex: search, $options: 'i' }; // Case-insensitive search
+    }
+// console.log(query)
+    const products = await Product.find(query);
+
+    return NextResponse.json({ products });
+  } catch (error) {
+    console.error(error);
+  return  NextResponse.json({ error: 'Failed to load products' });
+  }
+
+
+
+  // Parse the query parameters from the request URL
+  // const { searchParams } = new URL(request.url);
+  // const category = searchParams.get('category'); // Get the 'category' query param
+  // const search = searchParams.get('search');
+
+  // //  console.log(category,'123')
+  // await connectToMongoDB();
+  // // console.log(category)
+  // // Find products by category if the category parameter is provided, else return all products
+  // const products = category!='default'
+  //   ? await Product.find({ category:category })  // Filter products by category
+  //   : search? await Product.find({$regex: search, $options: 'i'}):await Product.find();             // Return all products if no category is specified
+
+  // return NextResponse.json({ products });
 }
 
 export async function DELETE(request) {

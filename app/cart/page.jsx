@@ -64,10 +64,11 @@ const CartPage = () => {
           </div>
 
           {/* Checkout Button */}
+          <Link href='/checkout'>
           <button className="mt-6 w-full bg-[#87e64b] text-white py-3 rounded-md hover:bg-[#2a4b15]">
             Checkout
           </button>
-
+          </Link>
           <Link
             href="/"
             className="block text-center text-gray-600 hover:underline mt-4"

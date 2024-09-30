@@ -8,12 +8,12 @@ import { NextResponse } from "next/server";
  */
 
 export async function POST(request) {
-  const { name, address, city ,surname} = await request.json();
+  const { name, address, city ,surname,postalCode,cartItems} = await request.json();
   await connectToMongoDB();
   /**
    * This will create the new Products
    */
-  await Product.create({ title, description, images, price,category});
-  return NextResponse.json({message: "Product Created"} , {status: 201})
+  await Product.create({name, address, city ,surname,postalCode,cartItems});
+  return NextResponse.json({message: "Product Created"} , {status: 201});
 }
 

@@ -24,8 +24,8 @@ const Checkout = () => {
 
   const handlePlaceOrder = () => {
     // Add logic to handle placing the order
-    // console.log('Order Placed:', shippingDetails, paymentMethod);
-    
+    console.log('Order Placed:', shippingDetails, paymentMethod,cartItems);
+
 
   };
 

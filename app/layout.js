@@ -1,6 +1,6 @@
 import { Providers } from "./GlobalRedux/Provider";
 import "./globals.css";
-import { CartProvider } from '../app/components/CartContext';
+import { CartProvider } from './CartContext';
 import Header from "./components/Header";
 
 // import Footer from "./components/Footer";
@@ -16,13 +16,9 @@ export default function RootLayout({ children }) {
       <body>
         <Providers>
         <CartProvider>
-          <Header/>
-        <main className="">{children}</main>
-        {/* <div className="">
-          <Footer />
-          
-        </div> */}
-          </CartProvider>
+            <Header className="fixed top-0 w-full z-10" /> {/* Fixed header */}
+            <main className="pt-[calc(100px)]">  {children} </main>
+         </CartProvider>
         </Providers>
       </body>
     </html>

@@ -10,7 +10,6 @@ const ProductList = () => {
 
   useEffect(() => {
     const fetchProductsData = async () => {
-       await new Promise(resolve=>setTimeout(resolve,1000));
       try {
         const response = await fetch(`https://reka-app-three.vercel.app/api/products/?category=${filter}`, { cache: "no-store" });
         // console.log(response)

@@ -17,13 +17,11 @@ const Header = () => {
       : dropDown.classList.add("hidden");
   };
 
-  
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
-  
 
   return (
     <>
@@ -43,10 +41,9 @@ const Header = () => {
             <Link href="">
               <Image className=" w-6" src={search} alt="" />
             </Link>
-          
-              <Image className=" w-8" src={dashboard} alt="" />
-        
-            {/* cart */} <button onClick={toggleCart} className="relative cursor-pointer">
+            <Image className=" w-8" src={dashboard} alt="" />
+            {/* cart */}{" "}
+            <button onClick={toggleCart} className="relative cursor-pointer">
               <div className="t-0 absolute left-3 -top-4">
                 <p className="flex h-2 w-2 items-center  justify-center rounded-full bg-red-500 p-3 text-xs text-white">
                   2
@@ -58,10 +55,10 @@ const Header = () => {
         </nav>
         {/* Menu sidebar */}
         <div className="w-full hidden " id="navbar-dropdown">
-          <Footer/>
+          <Footer />
         </div>
-          {/* Cart Modal */}
-          <Modal isOpen={isCartOpen} onClose={toggleCart} />
+        {/* Cart Modal */}
+        <Modal isOpen={isCartOpen} onClose={toggleCart} />
       </header>
     </>
   );

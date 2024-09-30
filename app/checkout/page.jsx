@@ -24,7 +24,9 @@ const Checkout = () => {
 
   const handlePlaceOrder = () => {
     // Add logic to handle placing the order
-    console.log('Order Placed:', shippingDetails, paymentMethod);
+    // console.log('Order Placed:', shippingDetails, paymentMethod);
+    
+
   };
 
   return (
@@ -37,8 +39,8 @@ const Checkout = () => {
         <div className="border border-black p-4 rounded bg-white">
           <h2 className="text-xl font-semibold mb-4 text-[#5D4037]">Order Summary</h2>
           {
-            cartItems.map((item) =>
-              <div className="flex justify-between mb-4">
+            cartItems.map((item,index) =>
+              <div key={index} className="flex justify-between mb-4">
             <p>{item.title}</p>
             <p>{item.quantity}</p>
             <p>{item.price}</p>

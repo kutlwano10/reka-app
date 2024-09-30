@@ -24,7 +24,30 @@ const Checkout = () => {
 
   const handlePlaceOrder = () => {
     // Add logic to handle placing the order
-    console.log('Order Placed:', shippingDetails, paymentMethod,cartItems);
+    console.log('Order Placed:', {...shippingDetails, paymentMethod,cartItems});
+
+    const fetchProductsData = async () => {
+      // console.log('123')
+      try {
+        const response = await fetch(`http://localhost:3000/api/buy`, {method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        
+          body: JSON.stringify({...shippingDetails,paymentMethod,cartItems}), });
+        if (!response.ok) {
+          throw new Error("Failed to post buy request");
+          
+        }
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log("Error posting:", error);
+      }
+    };
+
+    fetchProductsData(); // Re-fetch the products whenever the filter changes
 
 
   };

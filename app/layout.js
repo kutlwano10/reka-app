@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <Providers>
         <CartProvider>
             <Header className="fixed top-0 w-full z-10" /> {/* Fixed header */}
-            <main className="pt-[calc(100px)]">  {children} </main>
+            <main className="pt-">  {children} </main>
          </CartProvider>
         </Providers>
       </body>

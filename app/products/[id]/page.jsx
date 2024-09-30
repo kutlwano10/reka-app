@@ -3,10 +3,10 @@ import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import Image from "next/image";
 import Back from "../../public/turn-back2.png"
 import Link from "next/link";
-import { useCart } from "@/app/components/CartContext";
+
 export async function getProductDetails(productId) {
   const response = await fetch(
-    `http://localhost:3000/api/products/${productId}`
+    `https://reka-app-three.vercel.app/api/products/${productId}`
   );
 
   if (!response.ok) {
@@ -35,11 +35,14 @@ export default async function productDetails({ params }) {
 
   const { product } = await getProductDetails(params.id);
   console.log(product.title);
+<<<<<<< HEAD
   
 
   // const addToCart = useCart();
   //   addToCart(product)
   //   alert('Product added');
+=======
+>>>>>>> 1ec1ccf11945e35ab20f7ffcea8c80bd5c264cf7
   
 
   return (

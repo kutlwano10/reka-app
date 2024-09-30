@@ -10,12 +10,13 @@ const ProductList = () => {
 
   useEffect(() => {
     const fetchProductsData = async () => {
-       await new Promise(resolve=>setTimeout(resolve,1000))
+      console.log('123')
       try {
         const response = await fetch(`http://localhost:3000/api/products/?category=${filter}&search=${search}`, { cache: "no-store" });
        // console.log(response)
         if (!response.ok) {
           throw new Error("Failed to fetch products");
+          
         }
         const data = await response.json();
         setProducts(data.products); // Set the fetched products to the state

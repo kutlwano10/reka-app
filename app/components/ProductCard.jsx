@@ -1,17 +1,29 @@
-'use client'
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import favorite from "../public/favorite.svg";
 import cart from "../public/cart.svg";
-import { CldImage } from 'next-cloudinary';
-import { useCart } from "../components/CartContext";
+import { CldImage } from "next-cloudinary";
+import { useCart } from "../CartContext";
 
-const ProductCard = ( props ) => {
-  const { title,description, images, price,category, _id} = props;
-  // console.log(category)
-  
-   return (
+const ProductCard = (props) => {
+  const { title, description, images, price, category, _id } = props;
+  console.log(category);
+
+  const { addToCart } = useCart();
+
+  // Handle adding product to cart
+  const handleAddToCart = () => {
+    const product = {
+      id: _id,
+      title,
+      price,
+      image: images,
+    };
+    addToCart(product);
+  };
+  return (
     <div className="flex flex-col max-h-[130rem] cursor-pointer max-w-80 hover:-translate-y-1 hover:scale-105 duration-300 bg-white border border-slate-200 shadow shadow-slate-950/5  overflow-hidden">
       <div className="flex align-center p-2">
         <button className="relative left-[85%]">
@@ -21,15 +33,15 @@ const ProductCard = ( props ) => {
       </div>
 
       <Link href={`/products/${_id}`} className="flex justify-center">
-      <CldImage
-        cloudname={process.env.CLOUDINARY_CLOUD_NAME}
-        publicid={images}
-        alt="img"
-        src={images}
-        width="300"
-        height="300"
-        crop="scale"
-      />
+        <CldImage
+          cloudname={process.env.CLOUDINARY_CLOUD_NAME}
+          publicid={images}
+          alt="img"
+          src={images}
+          width="300"
+          height="300"
+          crop="scale"
+        />
       </Link>
 
       <div className="flex-1 flex flex-col p-2">
@@ -46,6 +58,7 @@ const ProductCard = ( props ) => {
             <h2>R{price}</h2>
           </div>
         </div>
+
         <div className="flex mt-1 space-x-2">
           <div className="justify-start flex-1">
             <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
@@ -54,8 +67,8 @@ const ProductCard = ( props ) => {
           </div>
         </div>
         <div className="flex justify-end gap-3 space-x-2">
-          <button >
-            <Image className="w-8" width={100} height={100}src={cart} alt=""  />
+          <button onClick={handleAddToCart}>
+            <Image className="w-8" width={100} height={100} src={cart} alt="" />
           </button>
         </div>
       </div>

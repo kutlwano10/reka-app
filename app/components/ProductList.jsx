@@ -12,7 +12,6 @@ const ProductList = () => {
     const fetchProductsData = async () => {
        await new Promise(resolve=>setTimeout(resolve,1000))
       try {
-        console.log('123')
         const response = await fetch(`http://localhost:3000/api/products/?category=${filter}&search=${search}`, { cache: "no-store" });
        // console.log(response)
         if (!response.ok) {

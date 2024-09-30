@@ -49,7 +49,7 @@ export async function GET(req,res) {
     if (search && search !== 'null') {
       query.title = { $regex: search, $options: 'i' }; // Case-insensitive search
     }
-console.log(query)
+// console.log(query)
     const products = await Product.find(query);
 
     return NextResponse.json({ products });

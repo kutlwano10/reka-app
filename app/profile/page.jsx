@@ -68,7 +68,7 @@ const BuyerProfile = () => {
           {isEditing ? (
             <button onClick={handleSave} className="bg-blue-700 text-white px-4 py-2 rounded">Save</button>
           ) : (
-            <button onClick={handleEdit} className="bg-gray-500 text-white px-4 py-2 rounded bg-blue-700">Edit Profile</button>
+            <button onClick={handleEdit} className="bg-blue-700 text-white px-4 py-2 rounded">Edit Profile</button>
           )}
         </div>
       </div>
@@ -86,12 +86,6 @@ const BuyerProfile = () => {
         <button className="mt-4 bg-blue-700 text-white px-4 py-2 rounded">Add Payment Method</button>
       </div>
 
-      {/* Security Settings Section */}
-      <div className="border-black border p-4 rounded mb-6">
-        <h2 className="text-xl font-semibold mb-4">Security Settings</h2>
-        <p>To reset your password, click below.</p>
-        <button className="mt-4 bg-blue-700 text-white px-4 py-2 rounded">Reset Password</button>
-      </div>
     </div>
   );
 };

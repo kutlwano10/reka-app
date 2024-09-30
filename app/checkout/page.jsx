@@ -1,7 +1,13 @@
 'use client'
 import React, { useState } from 'react';
+import { useCart } from "../CartContext";
 
 const Checkout = () => {
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
+
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
   const [shippingDetails, setShippingDetails] = useState({
     name: '',
     address: '',
@@ -30,22 +36,20 @@ const Checkout = () => {
         {/* Order Summary */}
         <div className="border border-black p-4 rounded bg-white">
           <h2 className="text-xl font-semibold mb-4 text-[#5D4037]">Order Summary</h2>
-          <div className="flex justify-between mb-4">
-            <p>Product 1</p>
-            <p>$25.00</p>
-          </div>
-          <div className="flex justify-between mb-4">
-            <p>Product 2</p>
-            <p>$15.00</p>
-          </div>
-          <div className="flex justify-between mb-4">
-            <p>Product 3</p>
-            <p>$10.00</p>
-          </div>
+          {
+            cartItems.map((item) =>
+              <div className="flex justify-between mb-4">
+            <p>{item.title}</p>
+            <p>{item.quantity}</p>
+            <p>{item.price}</p>
+          </div> 
+           )
+          }
+
           <hr className="border-[#8D6E63] mb-4" />
           <div className="flex justify-between">
             <p className="font-bold">Total</p>
-            <p className="font-bold">$50.00</p>
+            <p className="font-bold">R{calculateTotalPrice().toFixed(2)}</p>
           </div>
         </div>
 

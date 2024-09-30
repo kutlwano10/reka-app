@@ -35,14 +35,6 @@ export default async function productDetails({ params }) {
 
   const { product } = await getProductDetails(params.id);
   console.log(product.title);
-<<<<<<< HEAD
-  
-
-  // const addToCart = useCart();
-  //   addToCart(product)
-  //   alert('Product added');
-=======
->>>>>>> 1ec1ccf11945e35ab20f7ffcea8c80bd5c264cf7
   
 
   return (

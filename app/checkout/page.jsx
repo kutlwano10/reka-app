@@ -30,7 +30,7 @@ const Checkout = () => {
     const fetchProductsData = async () => {
       // console.log('123')
       try {
-        const response = await fetch(`http://localhost:3000/api/buy`, {method: 'POST',
+        const response = await fetch(`https://reka-app-three.vercel.app/api/buy`, {method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

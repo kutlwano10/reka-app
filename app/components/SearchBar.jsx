@@ -14,7 +14,6 @@ export default function Search({ onSearch }) {
     setSearchQuery(query);
     //console.log(query)
     dispatch(search1(query));
-   // onSearch(query); // Call the parent's search function
   };
 
   return (

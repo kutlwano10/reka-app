@@ -2,7 +2,7 @@
 import React from 'react'
 import { useCart } from "../CartContext";
 
-export default function page() {
+export default function OrderSuccess() {
 
     const { cartItems, removeFromCart, updateQuantity } = useCart();
 

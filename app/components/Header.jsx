@@ -58,7 +58,7 @@ const Header = () => {
             </Link>
              
             <Link href="/profile">
-           <button className="w-20 h-10 bg-[blue] text-white py-2 rounded-md mt-4 hover:bg-[blue]"> Profile</button >
+           <button className="w-12 h-8 bg-[blue] text-white rounded-md text  hover:bg-[blue]"> Profile</button >
             {/* <Image className=" w-8" src={dashboard} alt="" /> */}
             </Link>
             {/* cart */}

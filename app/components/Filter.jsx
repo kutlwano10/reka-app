@@ -17,8 +17,9 @@ const Filter = () => {
   return (
 <div>
   <h1 className="text-gray-800 text-2xl font-semibold pl-5 mb-4">Categories</h1>
-  <div className="flex w-full  gap-6 mb-8 justify-center  overflow-x-auto ">
-    <button onClick={()=>filterCate('default')}  className="w-20 h-10 bg-[blue] text-white py-2 rounded-md mt-4 hover:bg-[blue]">All</button>
+  <button onClick={()=>filterCate('default')}  className="w-20 h-10 bg-[blue] text-white py-2 rounded-md mb-2 mt-4 hover:bg-[blue]">All</button>
+  <div className="flex w-full  gap-6 mb-8 lg:justify-center  overflow-x-auto ">
+    
     {[
       { src: meat, label: "Minerals" },
       { src: meat, label: "Pets" },

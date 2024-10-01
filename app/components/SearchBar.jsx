@@ -12,7 +12,7 @@ export default function Search({ onSearch }) {
   const handleChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
-    // console.log(query)
+    //console.log(query)
     dispatch(search1(query));
    // onSearch(query); // Call the parent's search function
   };

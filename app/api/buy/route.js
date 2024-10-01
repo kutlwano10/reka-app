@@ -1,5 +1,5 @@
 import connectToMongoDB from "@/libs/mongodb";
-import Product from "@/models/product";
+import Bought from "@/models/bought";
 import { NextResponse } from "next/server";
 
 /**
@@ -8,12 +8,13 @@ import { NextResponse } from "next/server";
  */
 
 export async function POST(request) {
-  const { name, address, city ,surname} = await request.json();
+    console.log('123db')
+  const { name, address, city ,surname,postalCode,cartItems} = await request.json();
   await connectToMongoDB();
   /**
    * This will create the new Products
    */
-  await Product.create({ title, description, images, price,category});
-  return NextResponse.json({message: "Product Created"} , {status: 201})
+  await Bought.create({name, address, city ,surname,postalCode,cartItems});
+  return NextResponse.json({message: "Bought Created"} , {status: 201});
 }
 

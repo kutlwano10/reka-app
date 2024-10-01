@@ -14,7 +14,7 @@ const BuyerProfile = () => {
   const handleSave = () => setIsEditing(false);
 
   return (
-    <div className="max-w-7xl mx-auto p-4 relative top-8">
+    <div className="max-w-7xl mx-auto p-4 relative top-24">
       <h1 className="text-2xl font-bold mb-6">My Account</h1>
       
       {/* Profile Section */}

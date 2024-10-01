@@ -54,7 +54,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto relative p-4 bg-gray-200 top-8">
+    <div className="max-w-7xl mx-auto relative p-4 bg-gray-200 top-24">
       <h1 className="text-3xl font-bold mb-6 text-[#2E7D32]">Checkout</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

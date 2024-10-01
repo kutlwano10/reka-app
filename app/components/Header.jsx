@@ -58,7 +58,8 @@ const Header = () => {
             </Link>
              
             <Link href="/profile">
-            <Image className=" w-8" src={dashboard} alt="" />
+           <button className="w-20 h-10 bg-[blue] text-white py-2 rounded-md mt-4 hover:bg-[blue]"> Profile</button >
+            {/* <Image className=" w-8" src={dashboard} alt="" /> */}
             </Link>
             {/* cart */}
             <button onClick={toggleCart} className="relative cursor-pointer">

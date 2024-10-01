@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import cart from "../public/cart.svg";
@@ -11,6 +11,7 @@ import Modal from "./CartModal";
 import { useCart } from "../CartContext";
 
 const Header = () => {
+  const [totalItemsInCart,setTotalItemsInCart] =useState(null)
   const { cartItems } = useCart();
   const toggleNavbar = () => {
     const dropDown = document.getElementById("navbar-dropdown");
@@ -24,11 +25,18 @@ const Header = () => {
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
+
+
+  useEffect(()=>{
+    const totalItemsInCart1 = cartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+
+    setTotalItemsInCart(totalItemsInCart1);
+  },[])
   
-  const totalItemsInCart = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+
 
   return (
     <>

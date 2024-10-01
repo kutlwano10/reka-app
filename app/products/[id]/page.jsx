@@ -10,11 +10,9 @@ export async function getProductDetails(productId) {
   );
 
   if (!response.ok) {
-    console.log(response.ok);
     throw Error("Failed to fetch Data");
   }
   let data = await response.json();
-  console.log(data);
   return data;
 }
 
@@ -29,12 +27,8 @@ export default async function productDetails({ params }) {
    * The params will get the id of the routed Product Detail using the [id] folder
    */
 
-  function addToCart(item){
-
-  }
-
   const { product } = await getProductDetails(params.id);
-  console.log(product.title);
+  
   
 
   return (

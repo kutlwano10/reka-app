@@ -17,7 +17,7 @@ const Filter = () => {
   return (
 <div>
   <h1 className="text-gray-800 text-2xl font-semibold pl-5 mb-4">Categories</h1>
-  <div className="flex w-full  gap-6 mb-8 justify-center  overflow-x-auto ">
+  <div className="flex w-full  gap-6 mb-8 lg:justify-center  overflow-x-auto ">
     {[
       { src: meat, label: "Minerals" },
       { src: meat, label: "Pets" },

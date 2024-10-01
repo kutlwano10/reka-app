@@ -12,7 +12,6 @@ export const metadata = {
   manifest: '/manifest.json', // This points to your PWA manifest file
    // Sets the theme color for PWA
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

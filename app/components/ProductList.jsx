@@ -11,7 +11,6 @@ const ProductList = () => {
 
   useEffect(() => {
     const fetchProductsData = async () => {
-      // console.log('123')
       try {
        
         const response = await fetch(`https://reka-app-three.vercel.app/api/products/?category=${filter}&search=${search}`, { cache: "no-store" });
@@ -20,6 +19,7 @@ const ProductList = () => {
           
         }
         const data = await response.json();
+        console.log('fetched')
         setProducts(data.products); // Set the fetched products to the state
       } catch (error) {
         console.log("Error loading products:", error);

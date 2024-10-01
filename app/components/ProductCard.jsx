@@ -33,6 +33,7 @@ const ProductCard = (props) => {
 
       <Link href={`/products/${_id}`} className="flex justify-center">
         <CldImage
+          priority
           cloudname={process.env.CLOUDINARY_CLOUD_NAME}
           publicid={images}
           alt="img"

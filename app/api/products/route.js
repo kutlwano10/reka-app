@@ -1,6 +1,5 @@
 import connectToMongoDB from "@/libs/mongodb";
 import Product from "@/models/product";
-import { NextResponse } from "next/server";
 
 /**
  *
@@ -27,11 +26,6 @@ import { NextResponse } from "next/server";
 //     return NextResponse.json({products})
 
 // }
-
-import { NextResponse } from 'next/server';
-import { connectToMongoDB } from './path/to/your/mongoDBConnection';
-import Product from './path/to/your/productModel';
-
 // Function to handle GET requests
 export async function GET(req) {
   const { searchParams } = new URL(req.url);

@@ -8,6 +8,7 @@ import Search from "./components/SearchBar";
 import { Suspense } from "react";
 import loading from "./loading";
 
+
 export default function Home() {
   // useEffect(() => {
   //   window.scrollTo(0, 0);
@@ -27,6 +28,7 @@ export default function Home() {
         <ProductList />
         </Suspense>
             </div>
+          
       </div>
   );
 }

@@ -1,6 +1,6 @@
 
 export default function SkeletonLoader() {
-
+      console.log('123456789120')
     return(
     <div className="animate-pulse flex flex-col items-center">
       <div className="bg-gray-300 w-full h-48 rounded-md"></div> {/* Placeholder for image */}

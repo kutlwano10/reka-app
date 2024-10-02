@@ -30,7 +30,7 @@ const Checkout = () => {
     const fetchProductsData = async () => {
       // console.log('123')
       try {
-        const response = await fetch(`http://localhost:3000/api/buy`, {method: 'POST',
+        const response = await fetch(`https://reka-app-three.vercel.app/api/buy`, {method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto relative p-4 bg-gray-200 top-8">
+    <div className="max-w-7xl mx-auto relative p-4 bg-gray-200 top-24">
       <h1 className="text-3xl font-bold mb-6 text-[#2E7D32]">Checkout</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

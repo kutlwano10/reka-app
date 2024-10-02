@@ -2,6 +2,7 @@ import { Providers } from "./GlobalRedux/Provider";
 import "./globals.css";
 import { CartProvider } from "./CartContext";
 import Header from "./components/Header";
+import MobileBar from "./components/MobileBar";
 
 export const metadata = {
   title: 'Reka Store',
@@ -20,7 +21,8 @@ export default function RootLayout({ children }) {
         <Providers>
           <CartProvider>
             <Header className="fixed top-0 w-full z-10" /> {/* Fixed header */}
-            <main className="pt-"> {children} </main>
+            <main className="min-h-screen"> {children} </main>
+            <MobileBar/> {/* Mobile menu */}
           </CartProvider>
         </Providers>
       </body>

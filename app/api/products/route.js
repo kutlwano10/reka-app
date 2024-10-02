@@ -55,7 +55,13 @@ export async function GET(req,res) {
     return NextResponse.json({ products });
   } catch (error) {
     console.error(error);
+    // Set CORS headers for error response as well
+    errorResponse.headers.set('Access-Control-Allow-Origin', '*');
+    errorResponse.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    errorResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type');
   return  NextResponse.json({ error: 'Failed to load products' });
+
+  
   }
 
 

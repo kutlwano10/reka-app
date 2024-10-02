@@ -9,7 +9,6 @@ import { useCart } from "../CartContext";
 
 const ProductCard = (props) => {
   const { title, description, images, price, category, _id } = props;
-  console.log(category);
 
   const { addToCart } = useCart();
 
@@ -34,6 +33,7 @@ const ProductCard = (props) => {
 
       <Link href={`/products/${_id}`} className="flex justify-center">
         <CldImage
+          priority
           cloudname={process.env.CLOUDINARY_CLOUD_NAME}
           publicid={images}
           alt="img"

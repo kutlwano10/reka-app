@@ -10,11 +10,9 @@ export async function getProductDetails(productId) {
   );
 
   if (!response.ok) {
-    console.log(response.ok);
     throw Error("Failed to fetch Data");
   }
   let data = await response.json();
-  console.log(data);
   return data;
 }
 
@@ -30,15 +28,15 @@ export default async function productDetails({ params }) {
    */
 
   const { product } = await getProductDetails(params.id);
-  console.log(product.title);
+  
   
 
   return (
     <main>
       <Header />
-      <div className="mt-40 ml-10 w-14">
+      <div className="mt-20 ml-10 w-14">
           <Link href="/">
-            <Image src={Back} alt="turn-back" />
+            <Image src={Back} alt="turn-back" priority width={30} height={30} />
           </Link>
           </div>
         
@@ -55,7 +53,7 @@ export default async function productDetails({ params }) {
               <div>
                 <h1 className="text-4xl font-bold mb-2">{product.title}</h1>
                 <p className="text-gray-500 mb-4">{product.category}</p>
-                <p className="text-3xl font-bold text-[#87e64b] mb-6">{product.price}</p>
+                <p className="text-3xl font-bold text-[#87e64b] mb-6">R {product.price}</p>
                 <p className="text-gray-700 mb-6">{product.description}</p>
                
             
@@ -76,7 +74,7 @@ export default async function productDetails({ params }) {
               )}
               </div>
               <div className="flex gap-4">
-                <button className="flex-1 bg-[#87e64b] hover:bg-[#2a4b15] text-white py-3 px-6 rounded-lg flex items-center justify-center transition duration-300">
+                <button  className="flex-1 bg-[#87e64b] hover:bg-[#2a4b15] text-white py-3 px-6 rounded-lg flex items-center justify-center transition duration-300">
                   <FaShoppingCart className="mr-2" />
                   Add to Cart
                 </button>

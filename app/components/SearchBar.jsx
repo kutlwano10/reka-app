@@ -2,14 +2,18 @@
 import { useState } from "react";
 import Image from "next/image";
 import search from "../public/search.svg";
+import { useDispatch, useSelector } from 'react-redux';
+import {filter,search1} from '../GlobalRedux/Features/Filter/FilterSlice'
 
 export default function Search({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
-    onSearch(query); // Call the parent's search function
+    //console.log(query)
+    dispatch(search1(query));
   };
 
   return (

@@ -84,9 +84,11 @@ const CartModal = ({isOpen, onClose}) => {
               View my cart ({cartItems.length})
             </button>
           </Link>
+          <Link href='/checkout'>
           <button className="w-full bg-[#87e64b] text-white py-2 rounded-md mt-4 hover:bg-[#2a4b15]">
             Checkout
           </button>
+          </Link>
         </div>
       </div>
     </div>

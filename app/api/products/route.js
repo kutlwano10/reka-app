@@ -28,12 +28,18 @@ import { NextResponse } from "next/server";
 
 // }
 
+import { NextResponse } from 'next/server';
+import { connectToMongoDB } from './path/to/your/mongoDBConnection';
+import Product from './path/to/your/productModel';
+
+// Function to handle GET requests
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const category = searchParams.get("category"); // Get the 'category' query param
   const search = searchParams.get("search");
 
   try {
+    // Connect to MongoDB
     await connectToMongoDB();
 
     // Initialize query object
@@ -44,68 +50,53 @@ export async function GET(req) {
       query.category = category;
     }
 
-    // Filter by search string if provided and not null
+    // Filter by search string if provided
     if (search && search !== "null") {
       query.title = { $regex: search, $options: "i" }; // Case-insensitive search
     }
-    // console.log(query)
+
+    // Fetch products from MongoDB
     const products = await Product.find(query);
 
-    const response = NextResponse.json({ products });
-
-    response.headers.set("Access-Control-Allow-Origin", "*");
-    response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
-    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-
-    return response
+    // Return the response with CORS headers
+    return new Response(JSON.stringify({ products }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+    });
   } catch (error) {
     console.error(error);
-    const errorResponse = NextResponse.json({
-      error: "Failed to load products",
+
+    // Return error response with CORS headers
+    return new Response(JSON.stringify({ error: "Failed to load products" }), {
+      status: 500,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
     });
-    // Set CORS headers for error response as well
-    errorResponse.headers.set("Access-Control-Allow-Origin", "*");
-    errorResponse.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
-    errorResponse.headers.set("Access-Control-Allow-Headers", "Content-Type");
-    return errorResponse;
   }
-  // Parse the query parameters from the request URL
-  // const { searchParams } = new URL(request.url);
-  // const category = searchParams.get('category'); // Get the 'category' query param
-  // const search = searchParams.get('search');
-
-  // //  console.log(category,'123')
-  // await connectToMongoDB();
-  // // console.log(category)
-  // // Find products by category if the category parameter is provided, else return all products
-  // const products = category!='default'
-  //   ? await Product.find({ category:category })  // Filter products by category
-  //   : search? await Product.find({$regex: search, $options: 'i'}):await Product.find();             // Return all products if no category is specified
-
-  // return NextResponse.json({ products });
 }
 
+// Handle OPTIONS requests for CORS preflight
 export async function OPTIONS() {
-  const response = NextResponse.json({});
-  
-  // Set CORS headers
-  response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
-  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-
-  return response;
+  return new Response(null, {
+    status: 204, // No content
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
+  });
 }
 
-export async function DELETE(request) {
-  const id = request.nextUrl.searchParams.get("id");
-  await connectToMongoDB();
-  await Product.findByIdAndDelete(id);
-  return NextResponse.json({ message: "Product Deleted" }, { status: 201 });
-}
 
-// export async function DELETE() {
 
-//     await connectToMongoDB()
-//     await Product.deleteMany()
-//     return NextResponse.json({message: "Product Deleted"}, {status: 201})
-// }
+
+

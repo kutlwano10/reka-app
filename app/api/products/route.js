@@ -7,18 +7,18 @@ import { NextResponse } from "next/server";
  * @param {POST} request - i am creating a request to add this Products to the database
  */
 
-export async function POST(request) {
-  const { title, description, images , price,category} = await request.json();
-  await connectToMongoDB();
-  /**
-   * This will create the new Products
-   */
-  await Product.create({ title, description, images, price,category});
-  return NextResponse.json({message: "Product Created"} , {status: 201})
-}
+// export async function POST(request) {
+//   const { title, description, images, price, category } = await request.json();
+//   await connectToMongoDB();
+//   /**
+//    * This will create the new Products
+//    */
+//   await Product.create({ title, description, images, price, category });
+//   return NextResponse.json({ message: "Product Created" }, { status: 201 });
+// }
 
 /**
- * 
+ *
  * @returns all the List of Products
  */
 // export async function GET() {
@@ -28,11 +28,10 @@ export async function POST(request) {
 
 // }
 
-
-export async function GET(req,res) {
+export async function GET(req) {
   const { searchParams } = new URL(req.url);
-  const category = searchParams.get('category'); // Get the 'category' query param
-  const search = searchParams.get('search');
+  const category = searchParams.get("category"); // Get the 'category' query param
+  const search = searchParams.get("search");
 
   try {
     await connectToMongoDB();
@@ -41,31 +40,35 @@ export async function GET(req,res) {
     let query = {};
 
     // Filter by category if provided and not 'default'
-    if (category && category !== 'default') {
+    if (category && category !== "default") {
       query.category = category;
     }
 
     // Filter by search string if provided and not null
-    if (search && search !== 'null') {
-      query.title = { $regex: search, $options: 'i' }; // Case-insensitive search
+    if (search && search !== "null") {
+      query.title = { $regex: search, $options: "i" }; // Case-insensitive search
     }
-// console.log(query)
+    // console.log(query)
     const products = await Product.find(query);
 
-    return NextResponse.json({ products });
+    const response = NextResponse.json({ products });
+
+    response.headers.set("Access-Control-Allow-Origin", "*");
+    response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
+    return response
   } catch (error) {
     console.error(error);
+    const errorResponse = NextResponse.json({
+      error: "Failed to load products",
+    });
     // Set CORS headers for error response as well
-    errorResponse.headers.set('Access-Control-Allow-Origin', '*');
-    errorResponse.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    errorResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type');
-  return  NextResponse.json({ error: 'Failed to load products' });
-
-  
+    errorResponse.headers.set("Access-Control-Allow-Origin", "*");
+    errorResponse.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+    errorResponse.headers.set("Access-Control-Allow-Headers", "Content-Type");
+    return errorResponse;
   }
-
-
-
   // Parse the query parameters from the request URL
   // const { searchParams } = new URL(request.url);
   // const category = searchParams.get('category'); // Get the 'category' query param
@@ -82,15 +85,26 @@ export async function GET(req,res) {
   // return NextResponse.json({ products });
 }
 
+export async function OPTIONS() {
+  const response = NextResponse.json({});
+  
+  // Set CORS headers
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
+  return response;
+}
+
 export async function DELETE(request) {
-    const id = request.nextUrl.searchParams.get("id")
-    await connectToMongoDB()
-    await Product.findByIdAndDelete(id)
-    return NextResponse.json({message: "Product Deleted"}, {status: 201})
+  const id = request.nextUrl.searchParams.get("id");
+  await connectToMongoDB();
+  await Product.findByIdAndDelete(id);
+  return NextResponse.json({ message: "Product Deleted" }, { status: 201 });
 }
 
 // export async function DELETE() {
-    
+
 //     await connectToMongoDB()
 //     await Product.deleteMany()
 //     return NextResponse.json({message: "Product Deleted"}, {status: 201})

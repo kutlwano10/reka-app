@@ -1,33 +1,23 @@
+import Cors from 'cors';
 import connectToMongoDB from "@/libs/mongodb";
 import Product from "@/models/product";
+import { initMiddleware } from "@/libs/init-middleware";
 
-/**
- *
- * @param {POST} request - i am creating a request to add this Products to the database
- */
+const cors = initMiddleware(
+  Cors({
+    methods: ['GET', 'POST', 'OPTIONS'],
+    origin: '*', // Allow all origins, you can restrict it to 'http://localhost:3000'
+    allowedHeaders: ['Content-Type'],
+  })
+);
 
-// export async function POST(request) {
-//   const { title, description, images, price, category } = await request.json();
-//   await connectToMongoDB();
-//   /**
-//    * This will create the new Products
-//    */
-//   await Product.create({ title, description, images, price, category });
-//   return NextResponse.json({ message: "Product Created" }, { status: 201 });
-// }
 
-/**
- *
- * @returns all the List of Products
- */
-// export async function GET() {
-//     await connectToMongoDB()
-//     const products = await Product.find()
-//     return NextResponse.json({products})
 
-// }
+
 // Function to handle GET requests
 export async function GET(req) {
+
+  await cors(req)
   const { searchParams } = new URL(req.url);
   const category = searchParams.get("category"); // Get the 'category' query param
   const search = searchParams.get("search");
@@ -79,7 +69,8 @@ export async function GET(req) {
 }
 
 // Handle OPTIONS requests for CORS preflight
-export async function OPTIONS() {
+export async function OPTIONS(req) {
+  await cors(req)
   return new Response(null, {
     status: 204, // No content
     headers: {

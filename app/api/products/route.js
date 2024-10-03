@@ -1,32 +1,32 @@
 import Cors from 'cors';
-import connectToMongoDB from "@/libs/mongodb";
-import Product from "@/models/product";
+import connectToMongoDB from "../../../libs/mongodb";
+import Product from "../../../models/product";
 import { initMiddleware } from "../../../libs/init-middleware";
 
+// Initialize the CORS middleware
 const cors = initMiddleware(
   Cors({
     methods: ['GET', 'POST', 'OPTIONS'],
-    origin: '*', // Allow all origins, you can restrict it to 'http://localhost:3000'
+    origin: '*', // Allow all origins (adjust for production if needed)
     allowedHeaders: ['Content-Type'],
   })
 );
 
-
-
-
 // Function to handle GET requests
 export async function GET(req) {
-
-  await cors(req)
-  const { searchParams } = new URL(req.url);
-  const category = searchParams.get("category"); // Get the 'category' query param
-  const search = searchParams.get("search");
-
   try {
+    // Apply CORS
+    await cors(req);
+
+    // Parse the URL and extract search params
+    const { searchParams } = new URL(req.url);
+    const category = searchParams.get("category"); // Get 'category' query param
+    const search = searchParams.get("search");
+
     // Connect to MongoDB
     await connectToMongoDB();
 
-    // Initialize query object
+    // Build the query object
     let query = {};
 
     // Filter by category if provided and not 'default'
@@ -53,7 +53,7 @@ export async function GET(req) {
       },
     });
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching products:", error);
 
     // Return error response with CORS headers
     return new Response(JSON.stringify({ error: "Failed to load products" }), {
@@ -68,9 +68,11 @@ export async function GET(req) {
   }
 }
 
-// Handle OPTIONS requests for CORS preflight
+// Handle OPTIONS requests (CORS preflight)
 export async function OPTIONS(req) {
-  await cors(req)
+  // Apply CORS
+  await cors(req);
+
   return new Response(null, {
     status: 204, // No content
     headers: {

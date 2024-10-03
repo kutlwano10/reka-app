@@ -1,7 +1,7 @@
 import Cors from 'cors';
 import connectToMongoDB from "@/libs/mongodb";
 import Product from "@/models/product";
-import { initMiddleware } from "@/libs/init-middleware";
+import { initMiddleware } from "../../../libs/init-middleware";
 
 const cors = initMiddleware(
   Cors({

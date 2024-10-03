@@ -28,7 +28,6 @@ export async function POST(request) {
 
 // }
 
-
 export async function GET(req,res) {
   const { searchParams } = new URL(req.url);
   const category = searchParams.get('category'); // Get the 'category' query param

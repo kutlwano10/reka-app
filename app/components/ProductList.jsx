@@ -1,4 +1,4 @@
-'use client'; // Add this to make the component client-side
+'use client'; 
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
@@ -6,7 +6,7 @@ import SkeletonLoader from "./ProductSkeleton";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const filter = useSelector((state) => state.filter.filter); // Get filter state from Redux
+  const filter = useSelector((state) => state.filter.filter); 
   const search = useSelector((state) => state.filter.search1);
 
   useEffect(() => {

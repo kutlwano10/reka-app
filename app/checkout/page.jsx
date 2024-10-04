@@ -23,7 +23,9 @@ const Checkout = () => {
     setShippingDetails({ ...shippingDetails, [e.target.name]: e.target.value });
   };
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = (e) => {
+
+    e.preventDefault()
     // Add logic to handle placing the order
     console.log('Order Placed:', {...shippingDetails, paymentMethod,cartItems});
 
@@ -54,7 +56,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto relative p-4 bg-gray-200 top-24">
+    <form onSubmit={(e)=>handlePlaceOrder(e)} className="max-w-7xl mx-auto relative p-4 bg-gray-200 top-24">
       <h1 className="text-3xl font-bold mb-6 text-[#2E7D32]">Checkout</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -86,6 +88,7 @@ const Checkout = () => {
             <div>
               <label className="block text-sm font-medium text-blue-700">Full Name</label>
               <input
+              required
                 type="text"
                 name="name"
                 value={shippingDetails.name}
@@ -97,6 +100,7 @@ const Checkout = () => {
             <div>
               <label className="block text-sm font-medium text-blue-700">Address</label>
               <input
+                required
                 type="text"
                 name="address"
                 value={shippingDetails.address}
@@ -109,6 +113,7 @@ const Checkout = () => {
               <div>
                 <label className="block text-sm font-medium text-blue-700">City</label>
                 <input
+                 required
                   type="text"
                   name="city"
                   value={shippingDetails.city}
@@ -120,6 +125,7 @@ const Checkout = () => {
               <div>
                 <label className="block text-sm font-medium text-blue-700">Postal Code</label>
                 <input
+                  required
                   type="text"
                   name="postalCode"
                   value={shippingDetails.postalCode}
@@ -132,6 +138,7 @@ const Checkout = () => {
             <div>
               <label className="block text-sm font-medium text-blue-700">Country</label>
               <input
+                required
                 type="text"
                 name="country"
                 value={shippingDetails.country}
@@ -147,6 +154,7 @@ const Checkout = () => {
         <div className="border border-black p-4 rounded bg-white">
           <h2 className="text-xl font-semibold mb-4 text-[#5D4037]">Payment Method</h2>
           <select
+            required
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value)}
             className="w-full p-2 border rounded border-[#8D6E63] bg-blue-100 text-black"
@@ -162,13 +170,12 @@ const Checkout = () => {
       {/* Place Order Button */}
       <div className="mt-6 text-center">
         <button
-          onClick={handlePlaceOrder}
           className="bg-green-700 text-white px-6 py-3 rounded hover:bg-[#388E3C]"
         >
           Place Order
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

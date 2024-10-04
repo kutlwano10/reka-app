@@ -1,5 +1,5 @@
-import connectToMongoDB from "@/libs/mongodb";
-import Product from "@/models/product";
+import connectToMongoDB from "../../../libs/mongodb";
+import Product from "../../../models/product";
 import { NextResponse } from "next/server";
 
 /**

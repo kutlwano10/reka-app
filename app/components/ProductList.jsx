@@ -1,4 +1,4 @@
-'use client'; // Add this to make the component client-side
+'use client'; 
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
@@ -6,20 +6,21 @@ import SkeletonLoader from "./ProductSkeleton";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const filter = useSelector((state) => state.filter.filter); // Get filter state from Redux
+  const filter = useSelector((state) => state.filter.filter); 
   const search = useSelector((state) => state.filter.search1);
 
   useEffect(() => {
     const fetchProductsData = async () => {
-      // console.log('123')
       try {
-        const response = await fetch(`http://localhost:3000/api/products/?category=${filter}&search=${search}`, { cache: "no-store" });
+       
+        const response = await fetch(`https://reka-app-three.vercel.app/api/products/?category=${filter}&search=${search}`, { cache: "no-store" }, );
         if (!response.ok) {
           throw new Error("Failed to fetch products");
           
         }
         console.log(response)
         const data = await response.json();
+        console.log('fetched')
         setProducts(data.products); // Set the fetched products to the state
       } catch (error) {
         console.log("Error loading products:", error);

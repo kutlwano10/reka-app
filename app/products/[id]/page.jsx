@@ -1,4 +1,5 @@
 import Header from "@/app/components/Header";
+import AddToCart from "@/app/components/AddToCart";
 import { FaShoppingCart, FaHeart } from "react-icons/fa";
 import Image from "next/image";
 import Back from "../../public/turn-back2.png"
@@ -74,10 +75,11 @@ export default async function productDetails({ params }) {
               )}
               </div>
               <div className="flex gap-4">
-                <button  className="flex-1 bg-[#87e64b] hover:bg-[#2a4b15] text-white py-3 px-6 rounded-lg flex items-center justify-center transition duration-300">
+                {/* <button  className="flex-1 bg-[#87e64b] hover:bg-[#2a4b15] text-white py-3 px-6 rounded-lg flex items-center justify-center transition duration-300">
                   <FaShoppingCart className="mr-2" />
                   Add to Cart
-                </button>
+                </button> */}
+                <AddToCart product={product}/>
                 <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 px-4 rounded-lg transition duration-300">
                   <FaHeart />
                 </button>

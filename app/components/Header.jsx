@@ -34,7 +34,7 @@ const Header = () => {
     );
 
     setTotalItemsInCart(totalItemsInCart1);
-  },[])
+  },[cartItems.length])
   
 
 

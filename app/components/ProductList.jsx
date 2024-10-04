@@ -13,7 +13,7 @@ const ProductList = () => {
     const fetchProductsData = async () => {
       try {
        
-        const response = await fetch(`http://localhost:3000/api/products/?category=${filter}&search=${search}`, { cache: "no-store" }, );
+        const response = await fetch(`https://reka-app-three.vercel.app/api/products/?category=${filter}&search=${search}`, { cache: "no-store" }, );
         if (!response.ok) {
           throw new Error("Failed to fetch products");
           

@@ -23,7 +23,9 @@ const Checkout = () => {
     setShippingDetails({ ...shippingDetails, [e.target.name]: e.target.value });
   };
 
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = (e) => {
+
+    e.preventDefault()
     // Add logic to handle placing the order
     console.log('Order Placed:', {...shippingDetails, paymentMethod,cartItems});
 
@@ -54,7 +56,7 @@ const Checkout = () => {
   };
 
   return (
-    <form onSubmit={handlePlaceOrder} className="max-w-7xl mx-auto relative p-4 bg-gray-200 top-24">
+    <form onSubmit={(e)=>handlePlaceOrder(e)} className="max-w-7xl mx-auto relative p-4 bg-gray-200 top-24">
       <h1 className="text-3xl font-bold mb-6 text-[#2E7D32]">Checkout</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

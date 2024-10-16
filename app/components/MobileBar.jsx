@@ -11,13 +11,13 @@ export default function MobileBar() {
       <div className="justify-center rounded-3xl px-2 w-full bg-white shadow-md z-10 md:hidden ">
         <div className="flex justify-between items-center text-center p-4">
           <div className="text-center flex flex-col items-center">
-            <Link href={"/category"}>
+            <Link href={""}>
               <Image className=" w-6" src={category} alt="" />
             </Link>
             <p className="text-[12px]">Categories</p>
           </div>
           <div className="text-center flex flex-col items-center">
-            <Link href={"/search"}>
+            <Link href={""}>
               <Image className=" w-6" src={search} alt="" />
             </Link>
             <p className="text-[12px]">Search</p>
